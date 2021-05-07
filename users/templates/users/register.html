@@ -1,0 +1,28 @@
+{% load static %}
+
+{% block content %}
+
+<img src="{% static 'images/couriersys.jpg' %}" alt="" width="100%" height="400">
+<body style="background-color: skyblue">
+	<div class="content-section" style="margin-left: 0px; background-color: darkblue; color: white;">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend>Client Registration</legend>
+				<h3>NOTE: Username is your Id Number</h3>
+				{{ form.as_p }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Sign up</button>
+			</div>
+		</form>
+		<div class="border-top pt-3">
+			<small class="text-muted">
+			    Already have an account? <a class="ml-2" href="{% url 'service-home' %}" style="color: white;">Sign in</a>
+		    </small>
+		</div>
+		<a href="{% url 'main' %}" style="color: yellow;">Back to home</a>
+	</div>
+</body>
+
+{% endblock content %}

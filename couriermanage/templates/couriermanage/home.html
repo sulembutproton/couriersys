@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{% if title %}
+		<title>Courier System - {{ title }}</title>
+	{% else %}
+		<title>Courier System</title>
+	{% endif %}
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style type="text/css">
+	fieldset {
+		margin-right: 0px;
+		margin-left: 0px;
+	}
+	h1	{
+		font-family: "amrita";
+	}
+</style>
+<body class="bg-info">
+	{% if messages %}
+		{% for message in messages %}
+			<div>
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+	<img src="{% static 'images/couriersys.jpg' %}" alt="" width="100%" height="400">
+
+	<h1 style="margin-top: 0px; background-color: darkblue;"><center><b class="text-white">Courier System</b><a href="{% url 'about' %}"></a></center></h1><br>
+	<div style="margin-top: 0px";>
+		<!--<p><center>Login Using Your Id Number.</center></p><br>-->
+		<div>
+			<center>
+			<div>
+				<legend>
+				<form method="POST">
+					{% csrf_token %}
+					<fieldset>
+						{{ form.as_p }}
+					</fieldset>
+					<div>
+						<button class="btn btn-success pull-left" type="submit">Login</button>
+					</div>
+				</form>
+				</legend>
+			</div><br><br>
+			<p>Not yet Registered? <a href="{% url 'register' %}">Register now!</a></p>
+			<p>Are you an admin? <a href="{% url 'admin:login' %}">Click here!</a></p><br>
+			</center>
+		</div>
+	</div>
+</body>
+</html>
